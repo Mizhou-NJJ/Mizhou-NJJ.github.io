@@ -5,9 +5,7 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="index,follow">
-      
+      <meta name="robots" content="noindex,follow">
     
   
   <!-- 渲染优化 -->
@@ -20,7 +18,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>Mizhou</title>
+    <title>Archive: 2018/9 - Mizhou</title>
   
   
 
@@ -74,7 +72,7 @@
   
   <div class="cover-wrapper">
     
-      <cover class='cover  full'>
+      <cover class='cover  half'>
         <div class='cover-body'>
   <div class='a'>
     
@@ -124,7 +122,6 @@
   </div>
 </div>
 
-        <div class="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
       </cover>
     
     <div id="loading-bar-wrapper">
@@ -388,106 +385,17 @@
       
 
 <div class='l_main'>
-  
+	
+		
   <section class="post-list ">
     
       
         
           
         
-          
-        
       
     
     
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2018/10/01/test-my-site/">
-      The First C program
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://mizhou-njj.github.io" target="_blank" rel="nofollow noopener">
-    <img src="/img/logo.jpg">
-    <p>Mizhou</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Oct 1, 2018</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> year[<span class="number">2</span>][<span class="number">12</span>]=&#123;&#123;<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;,&#123;<span class="number">31</span>,<span class="number">29</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;&#125;;</span><br><span class="line"><span class="comment">//闰年二月是29天 </span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isleap</span><span class="params">(<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>((a%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;a%<span class="number">100</span>!=<span class="number">0</span>)||(a%<span class="number">400</span>==<span class="number">0</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> y,m,r;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;y)!=EOF)</span><br><span class="line">	&#123;  </span><br><span class="line">	   <span class="keyword">int</span> day=<span class="number">0</span>;</span><br><span class="line">	   <span class="keyword">int</span> choose=<span class="number">0</span>;</span><br><span class="line">	   getchar();</span><br><span class="line">	   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m);</span><br><span class="line">	   getchar();</span><br><span class="line">	   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;r);</span><br><span class="line">	   <span class="keyword">bool</span> flag=isleap(y);</span><br><span class="line">	   <span class="keyword">if</span>(flag==<span class="literal">true</span>)</span><br><span class="line">	   &#123;</span><br><span class="line">	   	  choose=<span class="number">1</span>;</span><br><span class="line">	   &#125;</span><br><span class="line">	   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m<span class="number">-1</span>;i++)</span><br><span class="line">	   &#123;</span><br><span class="line">	   	  day+=year[choose][i];</span><br><span class="line">	   &#125; </span><br><span class="line">	   day+=r;</span><br><span class="line">	   <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,day);	</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>哈哈哈第一个Hello World除外的C程序! 入坑的第一个程序!</p>
-
-      
-    </div>
-    
-      
-    
-  </section>
-</article>
-
-          </div>
-        
       
         
           <div class='post-wrapper'>
@@ -598,6 +506,7 @@
   
 
 
+	
 </div>
 <aside class='l_side'>
   
@@ -738,6 +647,14 @@
   </footer>
 
 <script>setLoadingBarProgress(80);</script>
+
+
+
+
+	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+	
+
+	
 
 
       <script>setLoadingBarProgress(60);</script>
