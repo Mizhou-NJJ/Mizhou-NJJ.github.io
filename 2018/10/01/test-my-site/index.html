@@ -21,6 +21,8 @@
     <meta name="keywords" content="C">
   
   
+    <meta name="description" content="哈哈哈第一个Hello World除外的C程序! 入坑的第一个程序!">
+  
 
   <!-- feed -->
   
@@ -333,7 +335,7 @@
   
 
   
-    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+    <article id="post" class="post white-box reveal blur article-type-post" itemscope itemprop="blogPost">
       
 
 
@@ -399,9 +401,9 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> year[<span class="number">2</span>][<span class="number">12</span>]=&#123;&#123;<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;,&#123;<span class="number">31</span>,<span class="number">29</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;&#125;;</span><br><span class="line"><span class="comment">//闰年二月是29天 </span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isleap</span><span class="params">(<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>((a%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;a%<span class="number">100</span>!=<span class="number">0</span>)||(a%<span class="number">400</span>==<span class="number">0</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> y,m,r;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;y)!=EOF)</span><br><span class="line">	&#123;  </span><br><span class="line">	   <span class="keyword">int</span> day=<span class="number">0</span>;</span><br><span class="line">	   <span class="keyword">int</span> choose=<span class="number">0</span>;</span><br><span class="line">	   getchar();</span><br><span class="line">	   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m);</span><br><span class="line">	   getchar();</span><br><span class="line">	   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;r);</span><br><span class="line">	   <span class="keyword">bool</span> flag=isleap(y);</span><br><span class="line">	   <span class="keyword">if</span>(flag==<span class="literal">true</span>)</span><br><span class="line">	   &#123;</span><br><span class="line">	   	  choose=<span class="number">1</span>;</span><br><span class="line">	   &#125;</span><br><span class="line">	   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m<span class="number">-1</span>;i++)</span><br><span class="line">	   &#123;</span><br><span class="line">	   	  day+=year[choose][i];</span><br><span class="line">	   &#125; </span><br><span class="line">	   day+=r;</span><br><span class="line">	   <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,day);	</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>哈哈哈第一个Hello World除外的C程序! 入坑的第一个程序!</p>
+          <p>哈哈哈第一个Hello World除外的C程序! 入坑的第一个程序!</p>
+<a id="more"></a>
+<p>v^v源代码可能已经丢了，不过那份欣喜依然在啊。</p>
 
           
             <div class='article_footer'>
@@ -472,10 +474,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-15T16:15:38+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-19T21:21:40+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 15, 2020</p>
+    <p>更新于：Jul 19, 2020</p>
   </a>
 </div>
 
@@ -502,7 +504,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://mizhu-njj.github.com/2018/10/01/test-my-site/&title=The First C program - Mizhou&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://mizhu-njj.github.com/2018/10/01/test-my-site/&title=The First C program - Mizhou&summary=哈哈哈第一个Hello World除外的C程序! 入坑的第一个程序!"
           
           >
           
@@ -514,7 +516,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://mizhu-njj.github.com/2018/10/01/test-my-site/&title=The First C program - Mizhou&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://mizhu-njj.github.com/2018/10/01/test-my-site/&title=The First C program - Mizhou&summary=哈哈哈第一个Hello World除外的C程序! 入坑的第一个程序!"
           
           >
           
@@ -538,6 +540,14 @@
         
           <div class="prev-next">
             
+              <a class='prev' href='/2018/11/11/xskdjs/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>肖申克的救赎</p>
+                <p class='content'>在18岁时读的小说，不过感觉电影比小说好! 以前没读懂，现在也没有。
+
+不过太喜欢安迪的行事风格了，帅啊! 结局也太美好了!
+</p>
+              </a>
+            
             
               <a class='next' href='/2018/09/24/hello-world/'>
                 <p class='title'>Hello World<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
@@ -555,7 +565,7 @@
 
 
 
-  <article class="post white-box reveal comments shadow">
+  <article class="post white-box reveal comments blur">
     <section class="article typo">
       <p ct><i class='fas fa-comments'></i> 评论</p>
       
@@ -641,6 +651,45 @@
         <div class='copyright'>
         <p><a href="https://mizhou-njj.github.io" target="_blank" rel="noopener">Copyright © 2019-2020 Mizhou</a></p>
 
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:syillusion@gmail.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/Mizhou-njj"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=135701227"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
         </div>
       
     
