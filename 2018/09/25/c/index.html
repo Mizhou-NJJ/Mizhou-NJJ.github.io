@@ -21,6 +21,8 @@
     <meta name="keywords" content="C">
   
   
+    <meta name="description" content="字节对齐今天在为struct 分配内存的时候，发现有鬼!">
+  
 
   <!-- feed -->
   
@@ -400,6 +402,8 @@
         <div class="article-entry" itemprop="articleBody">
           
           <h3 id="字节对齐"><a href="#字节对齐" class="headerlink" title="字节对齐"></a>字节对齐</h3><p>今天在为struct 分配内存的时候，发现有鬼!</p>
+<a id="more"></a>
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">char</span> *color;</span><br><span class="line">    <span class="keyword">char</span> sex;</span><br><span class="line">&#125;;</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"%d"</span>,<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>猜猜它会输出什么呢 ? 如果按照预期计算,在64位windows中它所占用的内存是 <strong>4+4+1=9 Byte</strong> 妥妥的没有问题, 可它实际输出的值<strong>12 Byte</strong>，平白无故多了<strong>3字节</strong>? 之前我也是不解，直至看了<a href="https://blog.csdn.net/liukun321/article/details/6974282" target="_blank" rel="noopener">咕叽咕叽</a>的文章。才知道有字节对齐规则，原因是为了方便CPU取数据!<br><strong>emm 然后就引发了下面的这个问题…</strong></p>
@@ -492,7 +496,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-29T12:56:51+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-07-29T13:03:14+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jul 29, 2020</p>
@@ -522,7 +526,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://mizhou-njj.github.io/2018/09/25/c/&title=C - Mizhou&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://mizhou-njj.github.io/2018/09/25/c/&title=C - Mizhou&summary=字节对齐今天在为struct 分配内存的时候，发现有鬼!"
           
           >
           
@@ -534,7 +538,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://mizhou-njj.github.io/2018/09/25/c/&title=C - Mizhou&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://mizhou-njj.github.io/2018/09/25/c/&title=C - Mizhou&summary=字节对齐今天在为struct 分配内存的时候，发现有鬼!"
           
           >
           
