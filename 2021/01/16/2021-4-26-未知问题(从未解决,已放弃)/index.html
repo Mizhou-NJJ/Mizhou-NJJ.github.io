@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>未知问题(从未解决,已放弃) - Mizhou</title>
+  
+    <meta name="keywords" content="c,asm">
+  
+  
+    <meta name="description" content="尝试在实模式下写一个micro kernel program 时，随着函数的增加而出现了N种意料之外的结果。
+初步检查问题可能为:
+内存访问超过了1MB
+未完整的读入硬盘数据
+数据段、栈段未合理分配
+">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img class='logo' src='/img/logo.jpg'/>
+          
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal blur article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2021/01/16/2021-4-26-%E6%9C%AA%E7%9F%A5%E9%97%AE%E9%A2%98(%E4%BB%8E%E6%9C%AA%E8%A7%A3%E5%86%B3,%E5%B7%B2%E6%94%BE%E5%BC%83)/">
+      未知问题(从未解决,已放弃)
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://mizhou-njj.github.io" rel="nofollow">
+    <img src="/img/logo.jpg">
+    <p>Mizhou</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jan 16, 2021</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p><strong>尝试在实模式下写一个micro kernel program 时，随着函数的增加而出现了N种意料之外的结果。</strong></p>
+<h4 id="初步检查问题可能为"><a href="#初步检查问题可能为" class="headerlink" title="初步检查问题可能为:"></a>初步检查问题可能为:</h4><ul>
+<li>内存访问超过了1MB</li>
+<li>未完整的读入硬盘数据</li>
+<li>数据段、栈段未合理分配</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="调试结果"><a href="#调试结果" class="headerlink" title="调试结果"></a>调试结果</h4><p>WDNMD!<br>结果三天的调试…<br>已放弃!</p>
+<h4 id="部分代码"><a href="#部分代码" class="headerlink" title="部分代码"></a>部分代码</h4><h5 id="C"><a href="#C" class="headerlink" title="C"></a>C</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdint.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COLOR_WHITE  0x07</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEYBOARD 0x00</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> E_KEYBOARD 0x10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 显示模式 低分辨率</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> H_40_2516_T 0x00</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> H_80_2516_T 0x02</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 显示模式 VGA</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VBE_640_400256 0x103</span></span><br><span class="line"><span class="comment">/*#################################调用汇编代码#########################################################################*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display_char</span><span class="params">(<span class="keyword">uint8_t</span> ch, <span class="keyword">uint16_t</span> row,<span class="keyword">uint16_t</span> col)</span></span>; <span class="comment">// 在第 row 行  第 col 列的位置显示一个字符 ch</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_cursor</span><span class="params">(<span class="keyword">uint16_t</span> row,<span class="keyword">uint16_t</span> col)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_vmof_lowp</span><span class="params">(<span class="keyword">uint8_t</span> mode)</span></span>; <span class="comment">// 设置普通显示模式</span></span><br><span class="line"><span class="function"><span class="keyword">uint8_t</span> <span class="title">set_vmof_VBE</span><span class="params">(<span class="keyword">uint16_t</span> mode)</span></span>; <span class="comment">// 设置高分辨率模式</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_pixel</span><span class="params">(<span class="keyword">uint16_t</span> row,<span class="keyword">uint16_t</span> col,<span class="keyword">uint16_t</span> pixel)</span></span>; <span class="comment">// 往指定位置写入一个指定颜色像素</span></span><br><span class="line"><span class="function"><span class="keyword">uint16_t</span> <span class="title">read_lba28hd_512B</span><span class="params">(<span class="keyword">uint16_t</span> vofds,<span class="keyword">uint16_t</span> offset,<span class="keyword">uint8_t</span> f3,<span class="keyword">uint8_t</span> f4,<span class="keyword">uint8_t</span> f5,<span class="keyword">uint8_t</span> f6)</span></span>; <span class="comment">// 从指定硬盘读入512字节,并将数据放到指定物理内存</span></span><br><span class="line"><span class="function"><span class="keyword">uint8_t</span> <span class="title">read_byte</span><span class="params">(<span class="keyword">uint16_t</span> vofds,<span class="keyword">uint16_t</span> offset)</span></span>; <span class="comment">// 从指定内存位置读取一字节</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">flush</span><span class="params">(<span class="keyword">void</span>)</span></span>; <span class="comment">// 从程序加载器进入后，这个方法设置了程序的栈段、数据段、</span></span><br><span class="line"><span class="function"><span class="keyword">uint16_t</span> <span class="title">input_char</span><span class="params">()</span></span>; <span class="comment">// 读入键盘一个字符 低字节为字母ascll码，若低字节为 0 ,则高字节存放扫描码</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hlt</span><span class="params">(<span class="keyword">void</span> )</span></span>; <span class="comment">// cpu进入低功耗状态</span></span><br><span class="line"><span class="function"><span class="keyword">uint8_t</span> <span class="title">get_bcd_year</span><span class="params">(<span class="keyword">void</span>)</span></span>; <span class="comment">// 获取bcd格式年</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 获取与设置常用寄存器的值</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="function"><span class="keyword">uint16_t</span> <span class="title">get_DS</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">uint16_t</span> <span class="title">get_ES</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">/////////////////////////////////////调用时出错了</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_DS</span><span class="params">(<span class="keyword">uint16_t</span> v)</span></span>; <span class="comment">// ss</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_ES</span><span class="params">(<span class="keyword">uint16_t</span> v)</span></span>;</span><br><span class="line"><span class="comment">/*############################################################################################################*/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *  #################################################################</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">caseup</span><span class="params">(<span class="keyword">char</span> c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">input_c</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">uint8_t</span> cx,<span class="keyword">uint8_t</span> cy,<span class="keyword">uint8_t</span> shade)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spl_INT_display</span><span class="params">(<span class="keyword">uint16_t</span> v,<span class="keyword">uint16_t</span> row,<span class="keyword">uint16_t</span> col)</span></span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * ##################################################################</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="comment">// 程序入口</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ino</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    set_vmof_lowp(<span class="number">0x03</span>);</span><br><span class="line">    init(<span class="number">9</span>,<span class="number">9</span>,<span class="string">'O'</span>);</span><br><span class="line">    input_c();</span><br><span class="line">    hlt();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">input_c</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> col=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> row=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">        short ax = input_char();</span><br><span class="line">        <span class="keyword">char</span> al = ax &amp; <span class="number">0b11111111</span>; <span class="comment">// 获取ax 低8位</span></span><br><span class="line">        <span class="keyword">char</span> ah = ax &gt;&gt; <span class="number">8</span>; <span class="comment">//获取 ax的高8位</span></span><br><span class="line">        <span class="keyword">if</span> (al==<span class="number">0x1b</span>)<span class="keyword">break</span>; <span class="comment">// Esc按</span></span><br><span class="line">        <span class="keyword">switch</span> (al) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">13</span>: <span class="comment">// 回车</span></span><br><span class="line">                set_cursor(++row,<span class="number">0</span>);</span><br><span class="line">                col^=col;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0x08</span>: <span class="comment">// 退格</span></span><br><span class="line">                display_char(<span class="number">0</span>,row,--col);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>: <span class="comment">// 键盘扫描码</span></span><br><span class="line">                <span class="keyword">if</span> (ah==<span class="number">72</span>)&#123; <span class="comment">// 上</span></span><br><span class="line">                    set_cursor(row==<span class="number">0</span>?<span class="number">0</span>:--row,col);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ah==<span class="number">80</span>)<span class="comment">//下</span></span><br><span class="line">                    set_cursor(row==<span class="number">24</span>?<span class="number">24</span>:++row,col);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (ah==<span class="number">75</span>) <span class="comment">//左</span></span><br><span class="line">                    set_cursor(row,col==<span class="number">0</span>?<span class="number">0</span>:--col);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (ah==<span class="number">77</span>) <span class="comment">//右</span></span><br><span class="line">                    set_cursor(row,col==<span class="number">79</span>?<span class="number">79</span>:++col);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                display_char(al,row,col);</span><br><span class="line">                init(<span class="number">9</span>,<span class="number">9</span>,al);</span><br><span class="line">                set_cursor(row,col==<span class="number">79</span>?<span class="number">79</span>:++col);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">caseup</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (c&gt;=<span class="number">97</span>&amp;&amp;c&lt;=<span class="number">122</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>  c<span class="number">-32</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>  c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">uint8_t</span> cx,<span class="keyword">uint8_t</span> cy,<span class="keyword">uint8_t</span> shade)</span></span>&#123;</span><br><span class="line">    <span class="keyword">uint8_t</span> v_start_x = <span class="number">40</span>-cx;</span><br><span class="line">    <span class="keyword">uint8_t</span> v_start_y = <span class="number">12</span> - cy/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">uint8_t</span> y = <span class="number">0</span>; y&lt;cy; ++y) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">uint8_t</span> x= <span class="number">0</span>; x &lt; cx*<span class="number">2</span>; ++x) &#123;</span><br><span class="line">            display_char(shade,y+v_start_y,x+v_start_x);</span><br><span class="line">            ++x;</span><br><span class="line">            display_char(<span class="string">' '</span>,y+v_start_y,x+v_start_x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spl_INT_display</span><span class="params">(<span class="keyword">uint16_t</span> v,<span class="keyword">uint16_t</span> row,<span class="keyword">uint16_t</span> col)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> svy;</span><br><span class="line">    <span class="keyword">char</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> cm [<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">        svy = v %<span class="number">10</span>;</span><br><span class="line">        v /=<span class="number">10</span>;</span><br><span class="line">        <span class="keyword">if</span> (v==<span class="number">0</span>&amp;&amp;svy==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        cm[index++] = svy;</span><br><span class="line">        i++;</span><br><span class="line"><span class="comment">//        display_char(svy+0x30,4,i++);</span></span><br><span class="line">    &#125;</span><br><span class="line">    i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(--index;index&gt;=<span class="number">0</span>;index--)&#123;</span><br><span class="line">        display_char(cm[index]+<span class="number">0x30</span>,row,col+i);</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="MBR"><a href="#MBR" class="headerlink" title="MBR"></a>MBR</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">jmp main</span><br><span class="line">msg db &#39;&#39;</span><br><span class="line">stsave db &#39;save to disk...&#39;</span><br><span class="line">done db &#39;done&#39;</span><br><span class="line">wrm db 10 ; 读取扇区数量</span><br><span class="line">diskaddr db 0xc8 ;扇区初始位置</span><br><span class="line">gbl dw 0x1000;数据加载到这里 逻辑地址</span><br><span class="line">proc dw 0x0000,0x1000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line">;----------初始化-----</span><br><span class="line">mov ax,0x7c0</span><br><span class="line">mov ds,ax</span><br><span class="line">mov ax,0xb800</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mov es,ax</span><br><span class="line">mov ax,0x00</span><br><span class="line">mov ss,ax</span><br><span class="line">xor sp,sp</span><br><span class="line"></span><br><span class="line">;---------end-----</span><br><span class="line">;call save_as_disk</span><br><span class="line"></span><br><span class="line">;call exit</span><br><span class="line">xor si,si</span><br><span class="line">xor ch,ch</span><br><span class="line">mov cl,[wrm]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">lr:</span><br><span class="line">call read_disk</span><br><span class="line">mov al,[diskaddr]</span><br><span class="line">inc al</span><br><span class="line">mov [diskaddr],al</span><br><span class="line">loop lr</span><br><span class="line">call far [proc]</span><br><span class="line">mov ax,0x1e00</span><br><span class="line">mov ds,ax</span><br><span class="line">;call show_by</span><br><span class="line">call exit</span><br><span class="line"></span><br><span class="line">save_as_disk:   ; 参数bx[ds:bx],cx 压栈 dx ax bx</span><br><span class="line">; 写扇区数量</span><br><span class="line">mov al,0x01</span><br><span class="line">mov dx,0x1f2</span><br><span class="line">out dx,al</span><br><span class="line"></span><br><span class="line">inc dx</span><br><span class="line">mov al,0xc8 ; 第一百个扇区</span><br><span class="line">out dx,al</span><br><span class="line">inc dx</span><br><span class="line">;--0x1f4----</span><br><span class="line">mov al,0x00</span><br><span class="line">out dx,al</span><br><span class="line">inc dx</span><br><span class="line">;-----0x1f5----</span><br><span class="line">mov al,0x00</span><br><span class="line">out dx,al</span><br><span class="line">inc dx</span><br><span class="line">; -------0x1f6----</span><br><span class="line">mov al,0xe0     ; 1110 0000</span><br><span class="line">out dx,al</span><br><span class="line">;----------</span><br><span class="line">inc dx</span><br><span class="line">mov al,0x30</span><br><span class="line">out dx,al</span><br><span class="line">; 接下来判断硬盘是否可读</span><br><span class="line">.waits:</span><br><span class="line">in al,dx     ;观察 0x1f7端口bit位状态</span><br><span class="line">and al,0x88 ; 0x88&#x3D;10001000</span><br><span class="line">cmp al,0x08  ; 0000 1000</span><br><span class="line">jnz .waits</span><br><span class="line">mov dx,0x1f0</span><br><span class="line">mov cx,256</span><br><span class="line">.save: ;要写入的字数量在cx中</span><br><span class="line">mov ax,&#39;wh&#39;</span><br><span class="line">out dx,ax     ; ds:bx</span><br><span class="line">add bx,0x02</span><br><span class="line">loop .save</span><br><span class="line">call exit</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">show:  ; 参数: [ds:bx]bx(地址) 和 cx(字节数)  PS:将bx，ax和cx压栈</span><br><span class="line">mov al,[ds:bx]</span><br><span class="line">mov ah,0x07</span><br><span class="line">mov [es:si],ax</span><br><span class="line">add si,0x02</span><br><span class="line">inc bx</span><br><span class="line">loop show</span><br><span class="line">ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">read_disk:  ; 压栈: dx, bx ax cx-----------------------------------------------</span><br><span class="line">push ds</span><br><span class="line">push cx</span><br><span class="line"></span><br><span class="line">xor bx,bx</span><br><span class="line"></span><br><span class="line">; 读取扇区数</span><br><span class="line">mov al,0x01</span><br><span class="line">mov dx,0x1f2</span><br><span class="line">out dx,al</span><br><span class="line"></span><br><span class="line">inc dx</span><br><span class="line">mov al,[diskaddr]</span><br><span class="line">out dx,al</span><br><span class="line">inc dx</span><br><span class="line">;-----0x1f4</span><br><span class="line">mov al,0x00</span><br><span class="line">out dx,al</span><br><span class="line">inc dx</span><br><span class="line">;------0x1f5</span><br><span class="line">mov al,0x00</span><br><span class="line">out dx,al</span><br><span class="line">inc dx</span><br><span class="line">;-------0x1f6</span><br><span class="line">mov al,0xe0</span><br><span class="line">out dx,al</span><br><span class="line">inc dx</span><br><span class="line"></span><br><span class="line">mov al,0x20</span><br><span class="line">out dx,al</span><br><span class="line">.waits:</span><br><span class="line">in al,dx     ;观察 0x1f7端口bit位状态</span><br><span class="line">and al,0x88 ; 0x88&#x3D;10001000</span><br><span class="line">cmp al,0x08  ; 0000 1000</span><br><span class="line">jnz .waits</span><br><span class="line">mov cx,256</span><br><span class="line">mov dx,0x1f0</span><br><span class="line"></span><br><span class="line">mov ax,[gbl]</span><br><span class="line">mov ds,ax</span><br><span class="line"></span><br><span class="line">.read:</span><br><span class="line">in ax,dx</span><br><span class="line">mov [ds:si],ax</span><br><span class="line">add si,2</span><br><span class="line">;mov byte [es:si],0x07</span><br><span class="line">loop .read</span><br><span class="line"></span><br><span class="line">pop cx</span><br><span class="line">pop ds</span><br><span class="line">;mov ds,ax</span><br><span class="line"></span><br><span class="line">ret</span><br><span class="line">;---------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">show_by:</span><br><span class="line">push ds</span><br><span class="line">mov ax,[ds:gbl]</span><br><span class="line">mov ds,ax</span><br><span class="line">xor bx,bx</span><br><span class="line">mov cx,512</span><br><span class="line">call show</span><br><span class="line">pop ds</span><br><span class="line">call exit</span><br><span class="line"></span><br><span class="line">exit:</span><br><span class="line">hlt</span><br><span class="line">jmp near exit</span><br><span class="line"></span><br><span class="line">times  510-($-$$) db 0</span><br><span class="line">dw 0xaa55</span><br></pre></td></tr></table></figure>
+
+<h5 id="API"><a href="#API" class="headerlink" title="API"></a>API</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[section .text]</span><br><span class="line">extern _set_vmof_lowp</span><br><span class="line">extern _display_char</span><br><span class="line">extern _hlt</span><br><span class="line">extern _get_bcd_year</span><br><span class="line">extern _input_char</span><br><span class="line">extern _set_cursor</span><br><span class="line">extern _flush</span><br><span class="line">extern _ino</span><br><span class="line">extern _write_pixel</span><br><span class="line">extern _read_byte</span><br><span class="line"></span><br><span class="line">_flush:</span><br><span class="line">      mov ax,0x1e00</span><br><span class="line">      mov es,ax</span><br><span class="line">      mov ds,ax</span><br><span class="line">      xor di,di</span><br><span class="line">      xor si,si</span><br><span class="line">      xor bp,bp</span><br><span class="line">      xor sp,sp</span><br><span class="line">      mov ax,0x000</span><br><span class="line">      mov ss,ax</span><br><span class="line">      call _ino</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">_set_vmof_lowp:</span><br><span class="line">   push bp</span><br><span class="line">   mov bp,sp</span><br><span class="line">   sub sp,24</span><br><span class="line">   mov ah,0</span><br><span class="line">   mov al,[di+8]</span><br><span class="line">   int 0x10</span><br><span class="line">   mov sp,bp</span><br><span class="line">   pop bp</span><br><span class="line">   ret</span><br><span class="line">_write_pixel:</span><br><span class="line">   push bp</span><br><span class="line">   mov bp,sp</span><br><span class="line">   sub sp,24</span><br><span class="line">   mov bh,0</span><br><span class="line">   mov dx,[di+8]</span><br><span class="line">   mov cx,[di+12]</span><br><span class="line">   mov al,[di+16]</span><br><span class="line">   mov ah,0x0c</span><br><span class="line">   int 0x10</span><br><span class="line">   mov sp,bp</span><br><span class="line">   pop bp</span><br><span class="line">   ret</span><br><span class="line">_display_char: ; display_char(char ch,int x,int y)</span><br><span class="line">      push bp</span><br><span class="line">      mov bp,sp</span><br><span class="line">      sub sp,32</span><br><span class="line">      xor bh,bh</span><br><span class="line">      ;----设置光标位置</span><br><span class="line">      mov ah,0x02</span><br><span class="line">      mov dh,[di+12]</span><br><span class="line">      mov dl,[di+16]</span><br><span class="line">      ;mov al,[di+20]</span><br><span class="line">      int 0x10</span><br><span class="line">      ;-------显示--------</span><br><span class="line">      mov ah,0x0a</span><br><span class="line">      mov cx,1</span><br><span class="line">      mov bl,0x04</span><br><span class="line">      mov al,[di+8]</span><br><span class="line">      int 0x10</span><br><span class="line">      ; ------更新光标</span><br><span class="line">      ;--------</span><br><span class="line">      mov sp,bp</span><br><span class="line">      pop bp</span><br><span class="line">      ret</span><br><span class="line">_get_bcd_year:</span><br><span class="line">   push bp</span><br><span class="line">   mov bp,sp</span><br><span class="line">   sub sp,16</span><br><span class="line">   mov ah,0x04</span><br><span class="line">   int 0x1a</span><br><span class="line">   xor ah,ah</span><br><span class="line">   mov al,cl</span><br><span class="line">   mov sp,bp</span><br><span class="line">   pop bp</span><br><span class="line">   ret</span><br><span class="line">_input_char:</span><br><span class="line">   push bp</span><br><span class="line">   mov bp,sp</span><br><span class="line">   sub sp,24</span><br><span class="line">   mov ah,0x00</span><br><span class="line">   int 0x16</span><br><span class="line">   mov sp,bp</span><br><span class="line">   pop bp</span><br><span class="line">   ret</span><br><span class="line">_set_cursor:</span><br><span class="line">   push bp</span><br><span class="line">   mov bp,sp</span><br><span class="line">   sub sp,24</span><br><span class="line">   mov ah,0x02</span><br><span class="line">   mov dh,[di+8]</span><br><span class="line">   mov dl,[di+12]</span><br><span class="line">   ;mov al,[di+20]</span><br><span class="line">   int 0x10</span><br><span class="line">   mov sp,bp</span><br><span class="line">   pop bp</span><br><span class="line">   ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">_read_byte:</span><br><span class="line">            push bp</span><br><span class="line">            push si</span><br><span class="line">            push ds</span><br><span class="line">            mov bp,sp</span><br><span class="line">            sub sp,48</span><br><span class="line">            mov ax,[di+12] ;偏移地址的值</span><br><span class="line">            mov si,ax</span><br><span class="line">            mov ax,[di+8] ; ppppp 不要用 si 来接参数</span><br><span class="line">            mov ds,ax</span><br><span class="line">            xor ah,ah</span><br><span class="line">            mov al,[ds:si]</span><br><span class="line">            mov sp,bp</span><br><span class="line">            pop ds</span><br><span class="line">            pop si</span><br><span class="line">            pop bp</span><br><span class="line">            ret</span><br><span class="line"></span><br><span class="line">_hlt:</span><br><span class="line">hlt</span><br><span class="line">jmp _hlt</span><br></pre></td></tr></table></figure>
+
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      
+        
+          
+        
+      
+        
+          <p><a href=https://mizhou-njj.github.io/2021/01/16/2021-4-26-%E6%9C%AA%E7%9F%A5%E9%97%AE%E9%A2%98(%E4%BB%8E%E6%9C%AA%E8%A7%A3%E5%86%B3,%E5%B7%B2%E6%94%BE%E5%BC%83)/>https://mizhou-njj.github.io/2021/01/16/2021-4-26-%E6%9C%AA%E7%9F%A5%E9%97%AE%E9%A2%98(%E4%BB%8E%E6%9C%AA%E8%A7%A3%E5%86%B3,%E5%B7%B2%E6%94%BE%E5%BC%83)/</a></p>
+        
+      
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-07-28T23:54:53+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jul 28, 2021</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/c/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>c</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/asm/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>asm</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://mizhou-njj.github.io/2021/01/16/2021-4-26-%E6%9C%AA%E7%9F%A5%E9%97%AE%E9%A2%98(%E4%BB%8E%E6%9C%AA%E8%A7%A3%E5%86%B3,%E5%B7%B2%E6%94%BE%E5%BC%83)/&title=未知问题(从未解决,已放弃) - Mizhou&summary=尝试在实模式下写一个micro kernel program 时，随着函数的增加而出现了N种意料之外的结果。
+初步检查问题可能为:
+内存访问超过了1MB
+未完整的读入硬盘数据
+数据段、栈段未合理分配
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://mizhou-njj.github.io/2021/01/16/2021-4-26-%E6%9C%AA%E7%9F%A5%E9%97%AE%E9%A2%98(%E4%BB%8E%E6%9C%AA%E8%A7%A3%E5%86%B3,%E5%B7%B2%E6%94%BE%E5%BC%83)/&title=未知问题(从未解决,已放弃) - Mizhou&summary=尝试在实模式下写一个micro kernel program 时，随着函数的增加而出现了N种意料之外的结果。
+初步检查问题可能为:
+内存访问超过了1MB
+未完整的读入硬盘数据
+数据段、栈段未合理分配
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2021/04/26/2021-4-28-%E8%98%91%E8%8F%87%E9%92%89%E6%97%A5%E8%AE%B0%E5%A4%8D%E5%88%B6/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>蘑菇钉日记复制</p>
+                <p class='content'>无任何技术含量，闲的蛋疼，刷一波伤害?将某人的蘑菇钉日报、周报、月报等复制到自己的账号上。
+
+
+1234567891011121314151617181920212223242526272829...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/10/10/xiaoding/'>
+                <p class='title'>校钉<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>简单五步免费使用校钉
+
+安装信任证书,去http://49.235.49.118:/xd/fr.cer下载,并点击安装.
+
+安装VirtualXposed 可以去https://vxposed....</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments blur">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '未知问题(从未解决,已放弃)',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#初步检查问题可能为"><span class="toc-text">初步检查问题可能为:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调试结果"><span class="toc-text">调试结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部分代码"><span class="toc-text">部分代码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#C"><span class="toc-text">C</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#MBR"><span class="toc-text">MBR</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#API"><span class="toc-text">API</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='5130909059'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://mizhou-njj.github.io">Copyright © 2019-2020 Mizhou</a></p>
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:syillusion@gmail.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/Mizhou-njj"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=135701227"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/Mizhou-NJJ/jsDelivr/wallpaper/backiee-172969.jpg", "https://cdn.jsdelivr.net/gh/Mizhou-NJJ/jsDelivr/wallpaper/backiee-82431.jpg", "https://cdn.jsdelivr.net/gh/Mizhou-NJJ/jsDelivr/wallpaper/backiee-116704.jpg", "https://cdn.jsdelivr.net/gh/Mizhou-NJJ/jsDelivr/wallpaper/home.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "6KTMtn1aD3gXH3Cwiig0UPdk-gzGzoHsz",
+    appKey: "drA3PBqBvHshPY6RIXJXQvJy",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
